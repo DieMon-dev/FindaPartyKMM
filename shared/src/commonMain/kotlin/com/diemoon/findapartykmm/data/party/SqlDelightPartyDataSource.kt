@@ -1,13 +1,13 @@
 package com.diemoon.findapartykmm.data.party
 
-import com.diemoon.findapartykmm.database.NoteDatabase
+import com.diemoon.findapartykmm.database.PartyDatabase
 import com.diemoon.findapartykmm.domain.party.Party
 import com.diemoon.findapartykmm.domain.party.PartyDataSource
 import com.diemoon.findapartykmm.domain.time.DateTimeUtil
 
-class SqlDelightPartyDataSource(db: NoteDatabase): PartyDataSource {
+class SqlDelightPartyDataSource(db: PartyDatabase): PartyDataSource {
 
-    private val queries = db.noteQueries
+    private val queries = db.partyQueries
     override suspend fun createParty(party: Party) {
         queries.insertParty(
             id = party.id,
