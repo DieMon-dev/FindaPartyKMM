@@ -19,14 +19,20 @@ class SqlDelightPartyDataSource(db: NoteDatabase): PartyDataSource {
     }
 
     override suspend fun getNoteById(id: Long): Party? {
-        TODO("Not yet implemented")
+        return queries
+            .getPartyById(id)
+            .executeAsOneOrNull()
+            ?.toParty()
     }
 
     override suspend fun getAllParties(): List<Party> {
-        TODO("Not yet implemented")
+        return queries
+            .getAllParties()
+            .executeAsList()
+            .map{ it.toParty() }
     }
 
     override suspend fun deleteNoteById(id: Long) {
-        TODO("Not yet implemented")
+        queries.deletePartyById(id)
     }
 }
