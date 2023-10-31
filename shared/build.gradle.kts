@@ -20,7 +20,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("com.squareup.sqldelight:gradle-plugin:1.5.3")
+                implementation("com.squareup.sqldelight:runtime:1.5.3")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
         }
@@ -40,7 +40,7 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                implementation("com.squareup.sqldelight:gradle-plugin:1.5.3")
+                implementation("com.squareup.sqldelight:native-driver:1.5.3")
             }
 
             dependsOn(commonMain)
@@ -64,7 +64,6 @@ sqldelight {
     database("NoteDatabase") {
         packageName = "com.diemoon.findapartykmm.database"
         sourceFolders = listOf("sqldelight")
-        //srcDirs("AppDatabase","migrations")
     }
 }
 
@@ -76,5 +75,3 @@ android {
         targetSdk = 33
     }
 }
-
-

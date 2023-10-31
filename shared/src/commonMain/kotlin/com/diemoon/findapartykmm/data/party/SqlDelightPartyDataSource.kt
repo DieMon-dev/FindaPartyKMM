@@ -1,11 +1,11 @@
 package com.diemoon.findapartykmm.data.party
 
-import com.diemoon.findapartykmm.database.PartyDatabase
+import com.diemoon.findapartykmm.database.NoteDatabase
 import com.diemoon.findapartykmm.domain.party.Party
 import com.diemoon.findapartykmm.domain.party.PartyDataSource
 import com.diemoon.findapartykmm.domain.time.DateTimeUtil
 
-class SqlDelightPartyDataSource(db: PartyDatabase): PartyDataSource {
+class SqlDelightPartyDataSource(db: NoteDatabase): PartyDataSource {
 
     private val queries = db.partyQueries
     override suspend fun createParty(party: Party) {
@@ -18,7 +18,7 @@ class SqlDelightPartyDataSource(db: PartyDatabase): PartyDataSource {
         )
     }
 
-    override suspend fun getNoteById(id: Long): Party? {
+    override suspend fun getPartyById(id: Long): Party? {
         return queries
             .getPartyById(id)
             .executeAsOneOrNull()
@@ -32,7 +32,7 @@ class SqlDelightPartyDataSource(db: PartyDatabase): PartyDataSource {
             .map{ it.toParty() }
     }
 
-    override suspend fun deleteNoteById(id: Long) {
+    override suspend fun deletePartyById(id: Long) {
         queries.deletePartyById(id)
     }
 }
