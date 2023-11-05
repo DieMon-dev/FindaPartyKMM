@@ -29,10 +29,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PartyListScreen(
+    navController: NavController,
     viewModel: PartyListViewModel = hiltViewModel()
 ){
     val state by viewModel.state.collectAsState()
@@ -43,6 +45,7 @@ fun PartyListScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
+                    navController.navigate("party_detail/-1L")
                 },
                 backgroundColor = Color.Black
             ) {
@@ -96,7 +99,7 @@ fun PartyListScreen(
                     PartyItem(
                         party = party,
                         backgroundColor = Color(party.colorHex),
-                        onPartyClick = { /*TODO*/ },
+                        onPartyClick = { navController.navigate("party_detail/${party.id}") },
                         onDeleteClick = {
                             viewModel.deletePartyById(party.id!!)
                         },

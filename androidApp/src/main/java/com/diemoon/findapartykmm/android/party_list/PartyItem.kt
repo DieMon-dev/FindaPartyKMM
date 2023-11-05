@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -50,21 +52,47 @@ fun PartyItem(
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
-            Text(
-                text = party.title,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp
-            )
             Icon(
-                imageVector = Icons.Default.Close,
-                contentDescription = "Delete party",
+                imageVector = Icons.Default.Check,
+                contentDescription = "Like party",
                 modifier = Modifier
                     .clickable(MutableInteractionSource(), null) {
                         onDeleteClick()
                     }
             )
+
+            Text(
+                text = party.title,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp
+            )
+
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = "Dislike party",
+                modifier = Modifier
+                    .clickable(MutableInteractionSource(), null) {
+                        onDeleteClick()
+                    }
+            )
+
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+        ){
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(),
+
+            ){
+//                Image(imageVector = , contentDescription = )
+            }
         }
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = party.content, fontWeight = FontWeight.Light)

@@ -17,6 +17,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.diemoon.findapartykmm.android.party_detail.PartyDetailScreen
 import com.diemoon.findapartykmm.android.party_list.PartyListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,7 +70,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                PartyListScreen()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "party_list"){
+                    composable(route = "party_list"){
+                        PartyListScreen(navController = navController)
+                    }
+                    composable(
+                        route = "party_detail/{partyId}",
+                        arguments = listOf(
+                            navArgument(name = "partyId"){
+                                type = NavType.LongType
+                                defaultValue = -1L
+                            }
+                        )
+                    ){ backStackEntry ->
+                        val partyId = backStackEntry.arguments?.getLong("partyId") ?: -1L
+                        PartyDetailScreen(partyId = partyId, navController = navController)
+                    }
+                }
             }
         }
     }

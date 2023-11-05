@@ -34,6 +34,7 @@ class PartyListViewModel @Inject constructor(
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), PartyListState())
 
+
     fun loadParties(){
         viewModelScope.launch{
             savedStateHandle["parties"] = partyDataSource.getAllParties()
