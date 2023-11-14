@@ -64,6 +64,7 @@ fun MyApplicationTheme(
         content = content
     )
 }
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

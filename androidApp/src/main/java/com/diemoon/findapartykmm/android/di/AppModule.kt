@@ -3,7 +3,7 @@ package com.diemoon.findapartykmm.android.di
 import android.app.Application
 import com.diemoon.findapartykmm.data.local.DatabaseDriverFactory
 import com.diemoon.findapartykmm.data.party.SqlDelightPartyDataSource
-import com.diemoon.findapartykmm.database.NoteDatabase
+import com.diemoon.findapartykmm.database.PartyDatabase
 import com.diemoon.findapartykmm.domain.party.PartyDataSource
 import com.squareup.sqldelight.db.SqlDriver
 import dagger.Module
@@ -24,6 +24,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNoteDataSource(driver: SqlDriver): PartyDataSource {
-        return SqlDelightPartyDataSource(NoteDatabase(driver))
+        return SqlDelightPartyDataSource(PartyDatabase(driver))
     }
 }

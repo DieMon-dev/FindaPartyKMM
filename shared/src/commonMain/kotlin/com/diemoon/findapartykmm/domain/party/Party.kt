@@ -1,6 +1,7 @@
 package com.diemoon.findapartykmm.domain.party
 
 import com.diemoon.findapartykmm.presentation.BabyBlueHex
+import com.diemoon.findapartykmm.presentation.DarkGreenHex
 import com.diemoon.findapartykmm.presentation.LightGreenHex
 import com.diemoon.findapartykmm.presentation.RedOrangeHex
 import com.diemoon.findapartykmm.presentation.RedPinkHex
@@ -15,7 +16,7 @@ data class Party(
     val created: LocalDateTime
 ){
    companion object{
-       private val colors = listOf(RedOrangeHex, RedPinkHex, LightGreenHex, BabyBlueHex, VioletHex)
+       private val colors = listOf(RedOrangeHex, RedPinkHex, LightGreenHex, BabyBlueHex, VioletHex, DarkGreenHex)
        fun generateRandomColor() = colors.random()
 
    }

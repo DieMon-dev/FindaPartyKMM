@@ -1,12 +1,20 @@
 package com.diemoon.findapartykmm.android.party_detail
 
+import android.content.Intent
+import android.os.Bundle
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.diemoon.findapartykmm.android.R
+import com.diemoon.findapartykmm.android.party_list.PartyListScreen
+import com.diemoon.findapartykmm.android.party_list.PartyListViewModel
 import com.diemoon.findapartykmm.domain.party.Party
 import com.diemoon.findapartykmm.domain.party.PartyDataSource
 import com.diemoon.findapartykmm.domain.time.DateTimeUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -94,4 +102,5 @@ class PartyDetailViewModel @Inject constructor(
             _hasPartyBeenPublished.value = true
         }
     }
+    
 }

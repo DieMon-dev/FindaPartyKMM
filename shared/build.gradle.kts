@@ -61,7 +61,7 @@ kotlin {
 }
 
 sqldelight {
-    database("NoteDatabase") {
+    database("PartyDatabase") {
         packageName = "com.diemoon.findapartykmm.database"
         sourceFolders = listOf("sqldelight")
     }
