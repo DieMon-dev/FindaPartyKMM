@@ -1,5 +1,6 @@
 package com.diemoon.findapartykmm.android.party_list
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -23,9 +24,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.diemoon.findapartykmm.android.R
 import com.diemoon.findapartykmm.domain.party.Party
 import com.diemoon.findapartykmm.domain.time.DateTimeUtil
 
@@ -91,7 +94,8 @@ fun PartyItem(
                     .fillMaxWidth(),
 
             ){
-//                Image(imageVector = , contentDescription = )
+                val image = painterResource(R.drawable.party1)
+                Image(painter = image, contentDescription = party.title)
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
